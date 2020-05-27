@@ -4,10 +4,8 @@ set print pretty on
 monitor arm semihosting enable
 load
 
-# detect unhandled exceptions, hard faults and panics
+# Detect unhandled exceptions, hard faults and panics
 break DefaultHandler
-#break HardFault
-#break rust_begin_unwind
 break main
 continue
 continue

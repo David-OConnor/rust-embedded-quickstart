@@ -5,9 +5,9 @@ use cortex_m;
 use cortex_m_rt::entry;
 use embedded_hal::blocking::delay::DelayMs;
 use hal::{
-    prelude::*,
     delay::Delay,
     i2c::I2c,
+    prelude::*,
     spi::{Mode, Phase, Polarity, Spi},
     stm32,
 };
@@ -17,7 +17,6 @@ use stm32f3xx_hal as hal;
 #[cfg(debug_assertions)]
 extern crate panic_semihosting;
 use cortex_m_semihosting::hprintln;
-
 
 #[entry]
 fn main() -> ! {
@@ -55,7 +54,7 @@ fn main() -> ! {
         dp.SPI1,
         (sck, miso, mosi),
         spi_mode,
-        4.mhz()
+        4.mhz(),
         clocks,
         &mut rcc.apb2,
     );
