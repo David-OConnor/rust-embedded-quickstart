@@ -21,9 +21,10 @@ version = "0.1.0"
 dependencies = [
  "cortex-m 0.6.2",
  "cortex-m-rt",
+ "cortex-m-semihosting",
  "embedded-hal",
  "f3",
- "panic-itm",
+ "panic-halt",
  "stm32f3xx-hal",
 ]
 
@@ -98,6 +99,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "cortex-m-semihosting"
+version = "0.3.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "113ef0ecffee2b62b58f9380f4469099b30e9f9cbee2804771b4203ba1762cfa"
+dependencies = [
+ "cortex-m 0.6.2",
 ]
 
 [[package]]
@@ -176,13 +186,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b1411551beb3c11dedfb0a90a0fa256b47d28b9ec2cdff34c25a2fa59e45dbdc"
 
 [[package]]
-name = "panic-itm"
-version = "0.4.1"
+name = "panic-halt"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "98830d17a95587207e41edaa3009b143d326ce134b0e3538ac98246a67d66cc3"
-dependencies = [
- "cortex-m 0.6.2",
-]
+checksum = "de96540e0ebde571dc55c73d60ef407c653844e6f9a1e2fdbd40c07b9252d812"
 
 [[package]]
 name = "proc-macro2"
@@ -256,7 +263,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "40809cfa10dd7d7ee4c414addb1145ce1214e2123489e1eba3d13045a3de32d5"
 dependencies = [
  "bare-metal",
- "cortex-m 0.5.10",
+ "cortex-m 0.6.2",
  "cortex-m-rt",
  "vcell",
 ]

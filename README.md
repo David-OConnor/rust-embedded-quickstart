@@ -12,10 +12,9 @@ by swapping out the `stm32f3xx-hal`, `f3`,  and `cortex-m` libraries in `src/mai
 and `Cargo.toml` as required.
 
 ## Running
-- Run `ocd.sh` or `ocd.ps1`, to connect to the microcontroller
-- Run `output.sh` or `output.ps1` in a different terminal to enable printing 
-and panic messages
-- Run `cargo run` in a third terminal to compile your program and upload it to the MCU
-Once complete, type `continue` to run it. To stop it, press `ctrl` + `c` in this window,
+- Run `ocd.sh` or `ocd.ps1`, to connect to the microcontroller. This window will
+show print statements and panics.
+- Run `cargo run` in a third terminal to compile your program and upload it to the MCU and
+ run it. To stop it, press `ctrl` + `c` in this window,
 then `quit()` to exit to the terminal.
 

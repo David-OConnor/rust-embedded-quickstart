@@ -1,9 +1,7 @@
-//! Source code for the standalone pH sensor
-
 #![no_main]
 #![no_std]
 
-use cortex_m::{self, iprintln};
+use cortex_m;
 use cortex_m_rt::entry;
 use embedded_hal::blocking::delay::{DelayMs, DelayUs};
 use hal::{
@@ -15,7 +13,10 @@ use hal::{
     stm32,
 };
 use stm32f3xx_hal as hal;
-use panic_itm; // panic handler
+
+// Handle panics and println.
+use panic_halt;
+use cortex_m_semihosting::hprintln;
 
 
 #[entry]
@@ -61,7 +62,7 @@ fn main() -> ! {
     );
 
     // To print things to the debug console:
-    iprintln!(stim, "Hello, world");
+    hprintln!(stim, "Hello, world").unwrap();
 
     loop {
         delay.delay_ms(1_000);
