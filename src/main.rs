@@ -3,7 +3,6 @@
 #![no_main]
 #![no_std]
 
-use anyleaf::{CalPt, PhSensor};
 use cortex_m::{self, iprintln};
 use cortex_m_rt::entry;
 use embedded_hal::blocking::delay::{DelayMs, DelayUs};
@@ -21,18 +20,19 @@ use panic_itm; // panic handler
 
 #[entry]
 fn main() -> ! {
-    // Set up microcontroller peripherals
+    // Set up CPU peripherals
     let mut cp = cortex_m::Peripherals::take().unwrap();
-    let dp = stm32::Peripherals::take().unwrap();
-
     let stim = &mut cp.ITM.stim[0];
 
+    // Set up microcontroller peripherals
+    let dp = stm32::Peripherals::take().unwrap();
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
     let clocks = rcc.cfgr.freeze(&mut flash.acr);
+
     let mut delay = Delay::new(cp.SYST, clocks);
 
-    // Set up gpio registers if required.
+    // Set up gpio pins if required.
     let mut gpioa = dp.GPIOA.split(&mut rcc.ahb);
     let mut gpiob = dp.GPIOB.split(&mut rcc.ahb);
 
@@ -55,7 +55,7 @@ fn main() -> ! {
         dp.SPI1,
         (sck, miso, mosi),
         spi_mode,
-        3.mhz(),  // todo: up to 8??
+        3.mhz()
         clocks,
         &mut rcc.apb2,
     );

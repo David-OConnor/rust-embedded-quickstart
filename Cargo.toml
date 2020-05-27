@@ -4,34 +4,16 @@ version = "0.1.0"
 authors = ["Anyleaf <david.alan.oconnor@gmail.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 # Standard HAL dependencies
-cortex-m = "0.6.2"
-cortex-m-rt = "0.6.12"
-#alloc-cortex-m = "0.3.5"  # Heap, using cortex-m's allocator.
-# Use git due to a bug in alloc support
-alloc-cortex-m = {"git" = "https://github.com/rust-embedded/alloc-cortex-m"}
-#stm32f3xx-hal = { version = "0.4.3", features=["stm32f303xc", "rt"] }
-# Use git for stm32f3xx trait for V2 pin support for opendrain for onewire.
-stm32f3xx-hal = { git = "https://github.com/stm32-rs/stm32f3xx-hal", features=["stm32f303xc", "rt"] }
-f3 ="0.6.1"
-#hd44780-driver = "0.3.0"  # display experimenting with
-#hd44780-driver = {git="https://github.com/JohnDoneth/hd44780-driver"}  # display experimenting with
-#hd44780-driver = {path = "../../hd44780-driver"}  # display experimenting with
-embedded-hal = { version = "0.2.3", features=["unproven"] }
-panic-itm = "0.4.1"
+cortex-m = "0.6.2" # CPU specific
+cortex-m-rt = "0.6.12" # CPU specific
+stm32f3xx-hal = { version = "0.4.3", features=["stm32f303xc", "rt"] } # MCU specific
+f3 ="0.6.1"   # MCU specific. Not imported directly, but required to work.
+embedded-hal = { version = "0.2.3", features=["unproven"] } # Traits to standardize APIs
+panic-itm = "0.4.1" # Allows printing to the debug console.
 
-# Project-specific dependencies
-onewire = {git = "https://github.com/kellerkindt/onewire"}
-#filter = "0.1.0"
-embedded-graphics = "0.6.2"
-#epd-waveshare = "0.4.0"
-epd-waveshare = {git = "https://github.com/caemor/epd-waveshare"}
-spi-memory = "0.2.0"
-anyleaf = {path = "../anyleaf_rust"}
-
+# These settings reduce file size when compiled in release mode.
 [profile.release]
 codegen-units = 1
 debug = true
