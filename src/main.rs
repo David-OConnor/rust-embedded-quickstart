@@ -23,7 +23,6 @@ use cortex_m_semihosting::hprintln;
 fn main() -> ! {
     // Set up CPU peripherals
     let mut cp = cortex_m::Peripherals::take().unwrap();
-    let stim = &mut cp.ITM.stim[0];
 
     // Set up microcontroller peripherals
     let dp = stm32::Peripherals::take().unwrap();
@@ -56,13 +55,13 @@ fn main() -> ! {
         dp.SPI1,
         (sck, miso, mosi),
         spi_mode,
-        3.mhz()
+        4.mhz()
         clocks,
         &mut rcc.apb2,
     );
 
     // To print things to the debug console:
-    hprintln!(stim, "Hello, world").unwrap();
+    hprintln!("Hello, world").unwrap();
 
     loop {
         delay.delay_ms(1_000);
