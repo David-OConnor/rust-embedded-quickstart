@@ -10,6 +10,8 @@
 - This repo is configured for a `stm32f3` controller: This can be changed
 by swapping out the `stm32f3xx-hal`, `f3`,  and `cortex-m` libraries in `src/main.rs`
 and `Cargo.toml` as required.
+- Install the appropriate compile target, eg `rustup target add thumbv7em-none-eabi`
+- (Install ST-Link USB driver and the toolchain/linker?)
 
 ## Running
 - Run `ocd.sh` or `ocd.ps1`, to connect to the microcontroller. This window will
@@ -18,3 +20,6 @@ show print statements and panics.
  run it. To stop it, press `ctrl` + `c` in this window,
 then `quit()` to exit to the terminal.
 
+
+## Reference:
+[Rust embedded book](https://rust-embedded.github.io/book)

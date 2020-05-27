@@ -3,19 +3,19 @@
 
 use cortex_m;
 use cortex_m_rt::entry;
-use embedded_hal::blocking::delay::{DelayMs, DelayUs};
+use embedded_hal::blocking::delay::DelayMs;
 use hal::{
     prelude::*,
     delay::Delay,
     i2c::I2c,
-
     spi::{Mode, Phase, Polarity, Spi},
     stm32,
 };
 use stm32f3xx_hal as hal;
 
 // Handle panics and println.
-use panic_halt;
+#[cfg(debug_assertions)]
+extern crate panic_semihosting;
 use cortex_m_semihosting::hprintln;
 
 

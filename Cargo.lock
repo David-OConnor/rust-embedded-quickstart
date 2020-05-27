@@ -24,7 +24,7 @@ dependencies = [
  "cortex-m-semihosting",
  "embedded-hal",
  "f3",
- "panic-halt",
+ "panic-semihosting",
  "stm32f3xx-hal",
 ]
 
@@ -186,10 +186,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b1411551beb3c11dedfb0a90a0fa256b47d28b9ec2cdff34c25a2fa59e45dbdc"
 
 [[package]]
-name = "panic-halt"
-version = "0.2.0"
+name = "panic-semihosting"
+version = "0.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de96540e0ebde571dc55c73d60ef407c653844e6f9a1e2fdbd40c07b9252d812"
+checksum = "c03864ac862876c16a308f5286f4aa217f1a69ac45df87ad3cd2847f818a642c"
+dependencies = [
+ "cortex-m 0.6.2",
+ "cortex-m-semihosting",
+]
 
 [[package]]
 name = "proc-macro2"
