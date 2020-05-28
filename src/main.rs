@@ -35,6 +35,23 @@ fn main() -> ! {
     let mut gpioa = dp.GPIOA.split(&mut rcc.ahb);
     let mut gpiob = dp.GPIOB.split(&mut rcc.ahb);
 
+    let mut input_pin = gpioa
+        .pa0
+        .into_floating_input(&mut gpioa.moder, &mut gpioa.pupdr);
+        // Or:
+        .into_floating_input(&mut gpioa.moder, &mut gpioa.pupdr);
+//        .into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+
+    let pin_val = input_pin.is_high().unwrap()
+
+    let output_pin = gpioa // todo use the right pin
+        .pa1
+        .into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
+        // Or:
+//        .into_open_drain_output(&mut gpioa.moder, &mut gpioa.otyper);
+
+    output_pin.set_high().unwrap();
+
     // Set up I2C if required.
     let scl = gpiob.pb6.into_af4(&mut gpiob.moder, &mut gpiob.afrl);
     let sda = gpiob.pb7.into_af4(&mut gpiob.moder, &mut gpiob.afrl);
