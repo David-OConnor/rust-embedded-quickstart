@@ -13,12 +13,12 @@ by swapping out the `stm32f3xx-hal`, `f3`,  and `cortex-m` libraries in `src/mai
 and `Cargo.toml` as required.
 - Install the appropriate compile target, eg `rustup target add thumbv7em-none-eabi`
 ([A list of ARM Cortext targets](https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/))
-- Install the [ST-LINK USB Driver](https://www.st.com/en/development-tools/stsw-link009.html)0
+- Install the [ST-LINK USB Driver](https://www.st.com/en/development-tools/stsw-link009.html)
 - (Install OCD linker??)
 
 # Customize for your microcontroller (MCU))
 - Change `memory.x` in accordance with your MCU's datsheet.
-- Change out the HAL libraries in `Cargo.toml` and `src/main.rs` for ones
+- Change out the HAL libraries in `Cargo.toml` and the imports in `src/main.rs` for ones
 suitable for your MCU. [Reference this](https://github.com/rust-embedded/awesome-embedded-rust)
 for a listing.
 
