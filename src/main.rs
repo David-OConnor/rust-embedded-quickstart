@@ -25,13 +25,15 @@ fn main() -> ! {
 
     // Set up microcontroller peripherals
     let dp = stm32::Peripherals::take().unwrap();
+
+    // Set up clocks
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
     let clocks = rcc.cfgr.freeze(&mut flash.acr);
 
     let mut delay = Delay::new(cp.SYST, clocks);
 
-    // Set up gpio pins if required.
+    // Set up gpio pins if required
     let mut gpioa = dp.GPIOA.split(&mut rcc.ahb);
     let mut gpiob = dp.GPIOB.split(&mut rcc.ahb);
 
@@ -39,10 +41,9 @@ fn main() -> ! {
         .pa0
         .into_floating_input(&mut gpioa.moder, &mut gpioa.pupdr);
         // Or:
-        .into_floating_input(&mut gpioa.moder, &mut gpioa.pupdr);
 //        .into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
 
-    let pin_val = input_pin.is_high().unwrap()
+    let pin_val = input_pin.is_high().unwrap();
 
     let output_pin = gpioa // todo use the right pin
         .pa1
