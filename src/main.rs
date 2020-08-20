@@ -14,12 +14,12 @@ use hal::{
 use stm32f3xx_hal as hal;
 
 // Handle panics and println.
-#[cfg(debug_assertions)]
-extern crate panic_semihosting;
-use cortex_m_semihosting::hprintln;
+use rtt_target::{rtt_init_print, rprintln};
 
 #[entry]
 fn main() -> ! {
+    // Enable RTT debug output (printing)
+    rtt_init_print!();
     // Set up CPU peripherals
     let mut cp = cortex_m::Peripherals::take().unwrap();
 

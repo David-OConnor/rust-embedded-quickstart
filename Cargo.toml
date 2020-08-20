@@ -12,9 +12,10 @@ stm32f3xx-hal = { version = "0.4.3", features=["stm32f303xc", "rt"] } # MCU spec
 f3 ="0.6.1"   # MCU specific. Not imported directly, but required to work.
 embedded-hal = { version = "0.2.3", features=["unproven"] } # Traits to standardize APIs
 
-cortex-m-semihosting = "0.3.5"
-#panic-halt = "0.2.0"
-panic-semihosting = "0.5.3"
+rtt-target = { version = "0.2.0", features = ["cortex-m"] }
+
+[profile.dev]
+debug = true
 
 # These settings reduce file size when compiled in release mode.
 [profile.release]
