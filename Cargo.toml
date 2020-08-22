@@ -14,9 +14,6 @@ embedded-hal = { version = "0.2.3", features=["unproven"] } # Traits to standard
 
 rtt-target = { version = "0.2.0", features = ["cortex-m"] }
 
-[profile.dev]
-debug = true
-
 # These settings reduce file size when compiled in release mode.
 [profile.release]
 codegen-units = 1
