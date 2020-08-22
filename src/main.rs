@@ -78,7 +78,7 @@ fn main() -> ! {
     );
 
     // To print things to the debug console:
-    hprintln!("Hello, world").unwrap();
+    rprintln!("Hello, world").unwrap();
 
     loop {
         delay.delay_ms(1_000);

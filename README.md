@@ -9,12 +9,13 @@
 `ocd.ps1` to reflect the pasth you installed this into.
 - Install the appropriate compile target, eg `rustup target add thumbv7em-none-eabihf`
 ([a list of ARM Cortext targets](https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/))
-- Install the [ST-LINK USB Driver](https://www.st.com/en/development-tools/stsw-link009.html)
+- Install the [ST-LINK USB Driver](https://www.st.com/en/development-tools/stsw-link009.html, or 
+one appropriate for your debug/flashing setup.
 
 # Customize for your microcontroller (MCU)
 - This repo is configured for a `stm32f3` MCU: This can be changed
 by swapping out the `stm32f3xx-hal`, `f3`,  and `cortex-m` libraries in `src/main.rs`
-and `Cargo.toml` to ones suitablef or your MCU, and changing the `runner` argument
+and `Cargo.toml` to ones suitable for your MCU, and changing the `runner` argument
  in `.cargo/config`. [Reference this](https://github.com/rust-embedded/awesome-embedded-rust)
 for a listing.
 - Change `memory.x` in accordance with your MCU's datsheet.
