@@ -45,7 +45,7 @@ fn main() -> ! {
 
     let pin_val = input_pin.is_high().unwrap();
 
-    let output_pin = gpioa // todo use the right pin
+    let mut output_pin = gpioa // todo use the right pin
         .pa1
         .into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
         // Or:
