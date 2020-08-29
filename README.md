@@ -6,7 +6,6 @@
 - Clone this repo
 - Install [Rust](https://www.rust-lang.org/tools/install)
 - Install [probe-run](https://ferrous-systems.com/blog/probe-run/): `cargo install probe-run`
-`ocd.ps1` to reflect the pasth you installed this into.
 - Install the appropriate compile target, eg `rustup target add thumbv7em-none-eabihf`
 ([a list of ARM Cortext targets](https://rust-embedded.github.io/cortex-m-quickstart/cortex_m_quickstart/))
 - Install the [ST-LINK USB Driver](https://www.st.com/en/development-tools/stsw-link009.html), or 

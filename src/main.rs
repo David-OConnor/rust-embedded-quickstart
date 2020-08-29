@@ -20,6 +20,7 @@ use rtt_target::{rtt_init_print, rprintln};
 fn main() -> ! {
     // Enable RTT debug output (printing)
     rtt_init_print!();
+
     // Set up CPU peripherals
     let mut cp = cortex_m::Peripherals::take().unwrap();
 
