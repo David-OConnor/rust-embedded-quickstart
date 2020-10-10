@@ -1,7 +1,7 @@
 [package]
 name = "project_name"
 version = "0.1.0"
-authors = ["Anyleaf <david.alan.oconnor@gmail.com>"]
+authors = ["Your Name <your@email.com>"]
 edition = "2018"
 
 [dependencies]
