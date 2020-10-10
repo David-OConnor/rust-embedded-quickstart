@@ -6,8 +6,8 @@ edition = "2018"
 
 [dependencies]
 # Standard HAL dependencies
-cortex-m = "^0.6.2" # CPU specific
-cortex-m-rt = "^0.6.12" # CPU specific
+cortex-m = "^0.6.2" # MCU architecture specific
+cortex-m-rt = "^0.6.12" # MCU architecture specific
 stm32f3xx-hal = { version = "^0.4.3", features=["stm32f303xc", "rt"] } # MCU specific
 f3 ="^0.6.1"   # MCU specific. Not imported directly, but required to work.
 embedded-hal = { version = "^0.2.4", features=["unproven"] } # Traits to standardize APIs
