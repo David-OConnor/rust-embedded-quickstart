@@ -2,6 +2,8 @@
 **/*.rs.bk
 /.idea
 
+Cargo.lock
+
 #PyCharm
 *.iws
 *.workspace.xml

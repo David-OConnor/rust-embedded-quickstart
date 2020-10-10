@@ -1,5 +1,4 @@
 # Instructions for getting started with embedded in Rust
-## Based off [embedded-hal](https://github.com/rust-embedded/embedded-hal) traits and libraries.
 
 
 ## Setup:

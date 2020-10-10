@@ -16,18 +16,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "anyleaf_watermonitor"
-version = "0.1.0"
-dependencies = [
- "cortex-m 0.6.2",
- "cortex-m-rt",
- "embedded-hal",
- "f3",
- "rtt-target",
- "stm32f3xx-hal",
-]
-
-[[package]]
 name = "as-slice"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -182,6 +170,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8872cf6f48eee44265156c111456a700ab3483686b3f96df4cf5481c89157319"
 dependencies = [
  "unicode-xid",
+]
+
+[[package]]
+name = "project_name"
+version = "0.1.0"
+dependencies = [
+ "cortex-m 0.6.2",
+ "cortex-m-rt",
+ "embedded-hal",
+ "f3",
+ "rtt-target",
+ "stm32f3xx-hal",
 ]
 
 [[package]]
