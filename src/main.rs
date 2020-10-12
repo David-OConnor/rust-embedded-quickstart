@@ -86,10 +86,6 @@ fn main() -> ! {
     }
 }
 
-// This handler will cause a crash if present in Debug, and one if not present
-// in Release mode. We should be only building in release mode, since it offers
-// a large performance boost. So much so, that any increase in compile time
-// is offset by the faster init speed.
 #[panic_handler]
 fn my_panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
