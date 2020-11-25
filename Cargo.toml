@@ -6,13 +6,14 @@ edition = "2018"
 
 [dependencies]
 # Standard HAL dependencies
+#cortex-m = "0.7.0"  # Rtt target is incompat
 cortex-m = "^0.6.2" # MCU architecture specific
 cortex-m-rt = "^0.6.12" # MCU architecture specific
-stm32f3xx-hal = { version = "^0.4.3", features=["stm32f303xc", "rt"] } # MCU specific
-f3 ="^0.6.1"   # MCU specific. Not imported directly, but required to work.
+stm32f3xx-hal-v2 = { version = "^0.5.0", features=["stm32f303xc", "rt"] } # MCU specific
+stm32f3 = "^0.12.1"   # MCU specific. Not imported directly, but required to work.
 embedded-hal = { version = "^0.2.4", features=["unproven"] } # Traits to standardize APIs
 
-rtt-target = { version = "^0.2.0", features = ["cortex-m"] }
+rtt-target = { version = "^0.2.2", features = ["cortex-m"] }
 
 # These settings reduce file size when compiled in release mode.
 [profile.release]

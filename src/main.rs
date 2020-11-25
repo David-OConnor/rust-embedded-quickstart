@@ -5,16 +5,17 @@ use cortex_m;
 use cortex_m_rt::entry;
 use embedded_hal::blocking::delay::DelayMs;
 use hal::{
+    clocks,
     delay::Delay,
     i2c::I2c,
+    pac,
     prelude::*,
     spi::{Mode, Phase, Polarity, Spi},
-    stm32,
 };
-use stm32f3xx_hal as hal;
+use stm32f3xx_hal_v2 as hal;
 
 // Handle panics and println.
-use rtt_target::{rtt_init_print, rprintln};
+use rtt_target::{rprintln, rtt_init_print};
 
 #[entry]
 fn main() -> ! {
@@ -25,12 +26,13 @@ fn main() -> ! {
     let mut cp = cortex_m::Peripherals::take().unwrap();
 
     // Set up microcontroller peripherals
-    let dp = stm32::Peripherals::take().unwrap();
+    let dp = pac::Peripherals::take().unwrap();
 
     // Set up clocks
-    let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
-    let clocks = rcc.cfgr.freeze(&mut flash.acr);
+
+    let mut clocks = clocks::Clocks::default();
+    let clocks = clocks.make_rcc_clocks();
 
     let mut delay = Delay::new(cp.SYST, clocks);
 
@@ -41,16 +43,16 @@ fn main() -> ! {
     let mut input_pin = gpioa
         .pa0
         .into_floating_input(&mut gpioa.moder, &mut gpioa.pupdr);
-        // Or:
-//        .into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
+    // Or:
+    //        .into_pull_up_input(&mut gpioa.moder, &mut gpioa.pupdr);
 
     let pin_val = input_pin.is_high().unwrap();
 
     let mut output_pin = gpioa // todo use the right pin
         .pa1
         .into_push_pull_output(&mut gpioa.moder, &mut gpioa.otyper);
-        // Or:
-//        .into_open_drain_output(&mut gpioa.moder, &mut gpioa.otyper);
+    // Or:
+    //        .into_open_drain_output(&mut gpioa.moder, &mut gpioa.otyper);
 
     output_pin.set_high().unwrap();
 
@@ -90,4 +92,3 @@ fn main() -> ! {
 fn my_panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
-
