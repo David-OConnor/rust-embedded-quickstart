@@ -89,6 +89,7 @@ fn main() -> ! {
 }
 
 #[panic_handler]
-fn my_panic(_info: &core::panic::PanicInfo) -> ! {
+fn my_panic(info: &core::panic::PanicInfo) -> ! {
+    rprintln!("Panic: {:?}", info);
     loop {}
 }
